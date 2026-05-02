@@ -14,10 +14,9 @@ A full-stack **Team Task Manager** built with the **MERN Stack** (MongoDB, Expre
 
 ## 🌐 Live Demo
 
-| | URL |
-|---|---|
-| 🔺 **Frontend (Vercel)** | [https://team-task-manager-five-delta.vercel.app](https://team-task-manager-five-delta.vercel.app) |
-| ⚙️ **Backend API (Render)** | [https://taskflow-backend-23i0.onrender.com](https://taskflow-backend-23i0.onrender.com) |
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Visit%20App-blue?style=for-the-badge&logo=vercel)](https://team-task-manager-five-delta.vercel.app)
+
+🔺 **[https://team-task-manager-five-delta.vercel.app](https://team-task-manager-five-delta.vercel.app)**
 
 > ⚠️ **Note:** Backend is on Render free tier — first request may take **30-60 seconds** to wake up after inactivity.
 
