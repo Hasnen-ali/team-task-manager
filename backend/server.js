@@ -11,9 +11,20 @@ connectDB();
 
 const app = express();
 
-// Middleware
+// Allowed origins — Vercel frontend + local dev
+const allowedOrigins = [
+  'https://team-task-manager-five-delta.vercel.app',
+  'http://localhost:3000',
+  process.env.CLIENT_URL,
+].filter(Boolean);
+
 app.use(cors({
-  origin: process.env.CLIENT_URL || '*',
+  origin: (origin, callback) => {
+    // Allow requests with no origin (Postman, mobile apps, curl)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.includes(origin)) return callback(null, true);
+    callback(new Error(`CORS blocked: ${origin}`));
+  },
   credentials: true,
 }));
 app.use(express.json());

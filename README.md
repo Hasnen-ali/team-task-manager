@@ -74,6 +74,17 @@ team-task-manager/
 
 ---
 
+## 🌐 Live Demo
+
+| | URL |
+|---|---|
+| 🔺 **Frontend** | [https://team-task-manager-five-delta.vercel.app](https://team-task-manager-five-delta.vercel.app) |
+| ⚙️ **Backend API** | [https://taskflow-backend-23i0.onrender.com](https://taskflow-backend-23i0.onrender.com) |
+
+> **Note:** Backend is hosted on Render free tier — first request may take 30-60 seconds to wake up.
+
+---
+
 ## 🚀 Local Setup — Step by Step
 
 ### Prerequisites
