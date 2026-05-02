@@ -7,6 +7,35 @@ A full-stack **Team Task Manager** built with the **MERN Stack** (MongoDB, Expre
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 ![Node](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
 ![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)
+![Render](https://img.shields.io/badge/Render-46E3B7?style=for-the-badge&logo=render&logoColor=white)
+
+---
+
+## 🌐 Live Demo
+
+| | URL |
+|---|---|
+| 🔺 **Frontend (Vercel)** | [https://team-task-manager-five-delta.vercel.app](https://team-task-manager-five-delta.vercel.app) |
+| ⚙️ **Backend API (Render)** | [https://taskflow-backend-23i0.onrender.com](https://taskflow-backend-23i0.onrender.com) |
+
+> ⚠️ **Note:** Backend is on Render free tier — first request may take **30-60 seconds** to wake up after inactivity.
+
+---
+
+## 🔐 Demo Accounts
+
+> Click any account card on the login page to instantly log in!
+> All passwords: `password123`
+
+| Name | Email | Role |
+|---|---|---|
+| 👑 Alice Admin | alice@taskflow.com | **Admin** |
+| 👑 Frank Manager | frank@taskflow.com | **Admin** |
+| 👤 Bob Builder | bob@taskflow.com | Member |
+| 👤 Carol Designer | carol@taskflow.com | Member |
+| 👤 David Dev | david@taskflow.com | Member |
+| 👤 Eva Engineer | eva@taskflow.com | Member |
 
 ---
 
@@ -16,7 +45,7 @@ A full-stack **Team Task Manager** built with the **MERN Stack** (MongoDB, Expre
 - 👥 **Role-Based Access** — Admin and Member roles with different permissions
 - 📁 **Project Management** — Create, update, delete projects; add/remove team members
 - ✅ **Task Management** — Full CRUD with assignment, status, priority, and due dates
-- 📊 **Dashboard** — Summary stats: total, completed, in-progress, overdue tasks
+- 📊 **Dashboard** — Summary stats: total, completed, in-progress, overdue, completion rate
 - 🔍 **Search & Filter** — Filter tasks by project, status, priority, search by title
 - 📄 **Pagination** — Tasks paginated for better performance
 - 🔔 **Toast Notifications** — Real-time feedback on all actions
@@ -30,10 +59,10 @@ A full-stack **Team Task Manager** built with the **MERN Stack** (MongoDB, Expre
 ```
 team-task-manager/
 │
-├── backend/                  # Node.js + Express API
+├── backend/                   # Node.js + Express API
 │   ├── config/
-│   │   └── db.js             # MongoDB connection
-│   ├── controllers/          # Route logic (MVC)
+│   │   └── db.js              # MongoDB connection
+│   ├── controllers/           # Route logic (MVC)
 │   │   ├── authController.js
 │   │   ├── projectController.js
 │   │   ├── taskController.js
@@ -49,24 +78,27 @@ team-task-manager/
 │   │   ├── authRoutes.js
 │   │   ├── projectRoutes.js
 │   │   ├── taskRoutes.js
-│   │   └── dashboardRoutes.js
-│   ├── seed.js               # Demo data script
-│   ├── server.js             # Entry point
+│   │   ├── dashboardRoutes.js
+│   │   └── seedRoutes.js
+│   ├── seed.js                # Demo data script (local)
+│   ├── server.js              # Entry point
 │   ├── package.json
-│   └── .env.example          # Environment variables template
+│   └── .env.example           # Environment variables template
 │
-├── frontend/                 # React + Vite + Tailwind
-│   └── src/
-│       ├── api/              # Axios API calls
-│       ├── components/       # Reusable UI components
-│       ├── context/          # Auth context (JWT)
-│       └── pages/            # Route pages
-│           ├── LoginPage.jsx
-│           ├── RegisterPage.jsx
-│           ├── DashboardPage.jsx
-│           ├── ProjectsPage.jsx
-│           ├── ProjectDetailPage.jsx
-│           └── TasksPage.jsx
+├── frontend/                  # React + Vite + Tailwind
+│   ├── src/
+│   │   ├── api/               # Axios API calls
+│   │   ├── components/        # Reusable UI components
+│   │   ├── context/           # Auth context (JWT)
+│   │   └── pages/             # Route pages
+│   │       ├── LoginPage.jsx
+│   │       ├── RegisterPage.jsx
+│   │       ├── DashboardPage.jsx
+│   │       ├── ProjectsPage.jsx
+│   │       ├── ProjectDetailPage.jsx
+│   │       └── TasksPage.jsx
+│   ├── vercel.json            # SPA routing fix for Vercel
+│   └── package.json
 │
 ├── .gitignore
 └── README.md
@@ -74,24 +106,13 @@ team-task-manager/
 
 ---
 
-## 🌐 Live Demo
-
-| | URL |
-|---|---|
-| 🔺 **Frontend** | [https://team-task-manager-five-delta.vercel.app](https://team-task-manager-five-delta.vercel.app) |
-| ⚙️ **Backend API** | [https://taskflow-backend-23i0.onrender.com](https://taskflow-backend-23i0.onrender.com) |
-
-> **Note:** Backend is hosted on Render free tier — first request may take 30-60 seconds to wake up.
-
----
-
 ## 🚀 Local Setup — Step by Step
 
 ### Prerequisites
 
-Make sure these are installed on your system:
+Make sure these are installed:
 
-- [Node.js](https://nodejs.org/) v18 or higher
+- [Node.js](https://nodejs.org/) v18+
 - [MongoDB](https://www.mongodb.com/try/download/community) (local) **OR** [MongoDB Atlas](https://www.mongodb.com/atlas) (cloud)
 - [Git](https://git-scm.com/)
 
@@ -111,15 +132,10 @@ cd team-task-manager
 ```bash
 cd backend
 npm install
-```
-
-Create the `.env` file:
-
-```bash
 cp .env.example .env
 ```
 
-Now open `backend/.env` and fill in your values:
+Open `backend/.env` and fill in your values:
 
 ```env
 PORT=5000
@@ -128,9 +144,10 @@ JWT_SECRET=your_secret_key_here
 JWT_EXPIRE=7d
 NODE_ENV=development
 CLIENT_URL=http://localhost:3000
+SEED_SECRET=taskflow_seed_2024
 ```
 
-> **Using MongoDB Atlas?** Replace `MONGO_URI` with your Atlas connection string:
+> **Using MongoDB Atlas?** Replace `MONGO_URI` with:
 > `mongodb+srv://<username>:<password>@cluster0.xxxxx.mongodb.net/team-task-manager`
 
 ---
@@ -144,30 +161,18 @@ cd frontend
 npm install
 ```
 
-Create the `.env` file:
-
-```bash
-cp .env.example .env
-```
-
-The default `frontend/.env` already points to localhost — no changes needed for local dev:
-
-```env
-VITE_API_URL=http://localhost:5000/api
-```
+No `.env` needed for local — the app auto-detects dev mode and uses the Vite proxy.
 
 ---
 
 ### Step 4 — Start the App
-
-You need **2 terminals** running simultaneously:
 
 **Terminal 1 — Backend:**
 ```bash
 cd backend
 npm run dev
 ```
-✅ Expected output:
+✅ Expected:
 ```
 Server running on port 5000
 MongoDB Connected: localhost
@@ -178,27 +183,25 @@ MongoDB Connected: localhost
 cd frontend
 npm run dev
 ```
-✅ Expected output:
+✅ Expected:
 ```
-  VITE v5.x.x  ready in 500ms
-  ➜  Local:   http://localhost:3000/
+➜  Local:   http://localhost:3000/
 ```
 
 ---
 
-### Step 5 — Seed Demo Data (Recommended)
+### Step 5 — Seed Demo Data
 
-Open a **third terminal** (while backend is running):
+**Terminal 3** (while backend is running):
 
 ```bash
 cd backend
 npm run seed
 ```
 
-✅ Expected output:
+✅ Expected:
 ```
 ✅ Connected to MongoDB
-🗑️  Cleared existing data
 👤 Created 6 users
 📁 Created 5 projects
 ✅ Created 30 tasks
@@ -213,22 +216,30 @@ npm run seed
 http://localhost:3000
 ```
 
-The login page shows **demo account cards** — just click any card to instantly log in!
+Click any **demo account card** on the login page to instantly log in!
 
 ---
 
-## 🔐 Demo Accounts
+## 🌱 Demo Data
 
-> All accounts use password: `password123`
+| | Count |
+|---|---|
+| Users | 6 (2 Admins, 4 Members) |
+| Projects | 5 (Active, On Hold, Completed) |
+| Tasks | 30 (Todo, In Progress, Completed, Overdue) |
 
-| Name | Email | Role |
+---
+
+## 🔒 Role Permissions
+
+| Action | Admin | Member |
 |---|---|---|
-| Alice Admin | alice@taskflow.com | **Admin** |
-| Frank Manager | frank@taskflow.com | **Admin** |
-| Bob Builder | bob@taskflow.com | Member |
-| Carol Designer | carol@taskflow.com | Member |
-| David Dev | david@taskflow.com | Member |
-| Eva Engineer | eva@taskflow.com | Member |
+| Create / delete projects | ✅ | ❌ |
+| Add / remove members | ✅ | ❌ |
+| Create / delete tasks | ✅ | ❌ |
+| Assign tasks to users | ✅ | ❌ |
+| Update task status | ✅ | ✅ (own tasks only) |
+| View all projects & tasks | ✅ | ❌ (own only) |
 
 ---
 
@@ -256,7 +267,7 @@ The login page shows **demo account cards** — just click any card to instantly
 ### Tasks
 | Method | Endpoint | Access | Description |
 |---|---|---|---|
-| GET | `/api/tasks` | Private | Get tasks (filtered) |
+| GET | `/api/tasks` | Private | Get tasks (filtered + paginated) |
 | POST | `/api/tasks` | Admin | Create task |
 | GET | `/api/tasks/:id` | Private | Get task by ID |
 | PUT | `/api/tasks/:id` | Admin/Member | Update task |
@@ -266,19 +277,6 @@ The login page shows **demo account cards** — just click any card to instantly
 | Method | Endpoint | Access | Description |
 |---|---|---|---|
 | GET | `/api/dashboard` | Private | Get summary stats |
-
----
-
-## 🔒 Role Permissions
-
-| Action | Admin | Member |
-|---|---|---|
-| Create / delete projects | ✅ | ❌ |
-| Add / remove members | ✅ | ❌ |
-| Create / delete tasks | ✅ | ❌ |
-| Assign tasks to users | ✅ | ❌ |
-| Update task status | ✅ | ✅ (own tasks only) |
-| View all projects & tasks | ✅ | ❌ (own only) |
 
 ---
 
@@ -296,32 +294,31 @@ The login page shows **demo account cards** — just click any card to instantly
 | Database | MongoDB, Mongoose |
 | Authentication | JWT + bcryptjs |
 | Validation | express-validator |
+| Frontend Deploy | Vercel |
+| Backend Deploy | Render |
+| Database Host | MongoDB Atlas |
 
 ---
 
-## ☁️ Deployment on Render
+## ☁️ Deployment
 
-### Backend (Web Service)
-1. Go to [render.com](https://render.com) → New → **Web Service**
-2. Connect your GitHub repo
-3. Set **Root Directory** → `backend`
-4. **Build Command** → `npm install`
-5. **Start Command** → `npm start`
-6. Add **Environment Variables**:
-   - `MONGO_URI` → your MongoDB Atlas URI
-   - `JWT_SECRET` → any random secret string
-   - `CLIENT_URL` → your frontend Render URL
-   - `NODE_ENV` → `production`
+### Backend → Render
+| Field | Value |
+|---|---|
+| Root Directory | `backend` |
+| Build Command | `npm install` |
+| Start Command | `npm start` |
+| Environment Variables | `MONGO_URI`, `JWT_SECRET`, `CLIENT_URL`, `NODE_ENV=production`, `SEED_SECRET` |
 
-### Frontend (Static Site)
-1. Go to [render.com](https://render.com) → New → **Static Site**
-2. Connect your GitHub repo
-3. Set **Root Directory** → `frontend`
-4. **Build Command** → `npm install && npm run build`
-5. **Publish Directory** → `dist`
-6. Add **Environment Variable**:
-   - `VITE_API_URL` → your backend Render URL + `/api`
-7. Add **Rewrite Rule**: `/*` → `/index.html` (for SPA routing)
+### Frontend → Vercel
+| Field | Value |
+|---|---|
+| Root Directory | `frontend` |
+| Framework | `Vite` |
+| Build Command | `npm run build` |
+| Output Directory | `dist` |
+
+> No environment variables needed on Vercel — API URL is auto-detected at build time.
 
 ---
 
@@ -331,10 +328,10 @@ The login page shows **demo account cards** — just click any card to instantly
 |---|---|
 | `MongoDB connection error` | Check `MONGO_URI` in `.env`, make sure MongoDB is running |
 | `Port 5000 already in use` | Change `PORT=5001` in `backend/.env` |
-| `Cannot find module` | Run `npm install` inside `backend/` and `frontend/` folders |
+| `Cannot find module` | Run `npm install` inside `backend/` and `frontend/` |
 | Frontend shows blank page | Make sure backend is running on port 5000 |
-| Seed fails | Make sure backend `.env` has correct `MONGO_URI` |
-| GitHub push asks for password | Use a [Personal Access Token](https://github.com/settings/tokens) instead |
+| Render first request slow | Free tier sleeps — wait 30-60 sec for wake up |
+| GitHub push asks for password | Use a [Personal Access Token](https://github.com/settings/tokens) |
 
 ---
 
@@ -344,4 +341,4 @@ MIT License — free to use and modify.
 
 ---
 
-> Built with ❤️ using the MERN Stack
+> Built with ❤️ using the MERN Stack | Deployed on Vercel + Render + MongoDB Atlas
